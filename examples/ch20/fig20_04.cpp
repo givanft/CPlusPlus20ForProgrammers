@@ -1,22 +1,22 @@
 // fig20_04.cpp
 // Demonstrating operator keywords.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 
 int main() {
    bool a{true};
    bool b{false};
 
-   std::cout << fmt::format("a = {}; b = {}\n\n", a, b);
+   std::cout << std::format("a = {}; b = {}\n\n", a, b);
 
    std::cout << "Logical operator keywords:\n"
-      << fmt::format("   a and a: {}\n", a and a)
-      << fmt::format("   a and b: {}\n", a and b)
-      << fmt::format("    a or a: {}\n", a or a)
-      << fmt::format("    a or b: {}\n", a or b)
-      << fmt::format("     not a: {}\n", not a)
-      << fmt::format("     not b: {}\n", not b)
-      << fmt::format("a not_eq b: {}\n", a not_eq b);
+      << std::format("   a and a: {}\n", a and a)
+      << std::format("   a and b: {}\n", a and b)
+      << std::format("    a or a: {}\n", a or a)
+      << std::format("    a or b: {}\n", a or b)
+      << std::format("     not a: {}\n", not a)
+      << std::format("     not b: {}\n", not b)
+      << std::format("a not_eq b: {}\n", a not_eq b);
 }
 
 /**************************************************************************

@@ -1,7 +1,7 @@
 // fig04_10.cpp
 // Logical operators.
 #include <iostream>
-#include <fmt/format.h>
+#include <format>
 using namespace std;
 using namespace fmt;
 

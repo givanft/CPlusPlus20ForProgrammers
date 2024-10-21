@@ -1,6 +1,6 @@
 // Fig. 20.11: Author.cpp
 // Author member-function definitions.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -11,7 +11,7 @@
 Author::Author(std::string_view authorName) : name(authorName) {}
 
 Author::~Author() {
-   std::cout << fmt::format("Destroying Author: {}\n", name);
+   std::cout << std::format("Destroying Author: {}\n", name);
 }
 
 // print the title of the Book this Author wrote
@@ -19,9 +19,9 @@ void Author::printBookTitle() {
    // if weakBookPtr.lock() returns a non-empty shared_ptr
    if (std::shared_ptr<Book> bookPtr{weakBookPtr.lock()}) {
       // show the reference count increase and print the Book's title
-      std::cout << fmt::format("Reference count for Book {} is {}\n",
+      std::cout << std::format("Reference count for Book {} is {}\n",
          bookPtr->title, bookPtr.use_count());
-      std::cout << fmt::format("Author {} wrote the book {}\n", 
+      std::cout << std::format("Author {} wrote the book {}\n", 
          name, bookPtr->title);
    }
    else { // weakBookPtr points to NULL

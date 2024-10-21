@@ -1,6 +1,6 @@
 // fig18_01.cpp
 // Creating a generator coroutine with co_yield.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <sstream>
 #include <thread> 
@@ -15,7 +15,7 @@ std::string id() {
 
 // coroutine that repeatedly yields the next Fibonacci value in sequence
 tl::generator<int> fibonacciGenerator(int limit) {
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Thread {}: fibonacciGenerator started executing\n", id());
 
    int value1{0}; // Fibonacci(0)
@@ -30,19 +30,19 @@ tl::generator<int> fibonacciGenerator(int limit) {
       value2 = temp;
    }
 
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Thread {}: fibonacciGenerator finished executing\n", id());
 }
 
 int main() {
-   std::cout << fmt::format("Thread {}: main begins\n", id());
+   std::cout << std::format("Thread {}: main begins\n", id());
 
    // display first 10 Fibonacci values 
    for (int i{0}; auto value : fibonacciGenerator(10)) {
-      std::cout << fmt::format("Fibonacci({}) is {}\n", i++, value);
+      std::cout << std::format("Fibonacci({}) is {}\n", i++, value);
    }  
 
-   std::cout << fmt::format("Thread {}: main ends\n", id());
+   std::cout << std::format("Thread {}: main ends\n", id());
 }
 
 

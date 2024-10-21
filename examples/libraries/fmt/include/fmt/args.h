@@ -62,7 +62,7 @@ class dynamic_arg_list {
 
 /**
   \rst
-  A dynamic version of `fmt::format_arg_store`.
+  A dynamic version of `std::format_arg_store`.
   It's equipped with a storage to potentially temporary objects which lifetimes
   could be shorter than the format arguments object.
 
@@ -165,7 +165,7 @@ class dynamic_format_arg_store
 
     **Example**::
 
-      fmt::dynamic_format_arg_store<fmt::format_context> store;
+      fmt::dynamic_format_arg_store<std::format_context> store;
       store.push_back(42);
       store.push_back("abc");
       store.push_back(1.5f);
@@ -186,7 +186,7 @@ class dynamic_format_arg_store
 
     **Example**::
 
-      fmt::dynamic_format_arg_store<fmt::format_context> store;
+      fmt::dynamic_format_arg_store<std::format_context> store;
       char band[] = "Rolling Stones";
       store.push_back(std::cref(band));
       band[9] = 'c'; // Changing str affects the output.

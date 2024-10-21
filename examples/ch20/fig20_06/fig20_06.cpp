@@ -1,6 +1,6 @@
 // fig20_06.cpp
 // Demonstrating downcasting and runtime type information (RTTI). 
-#include <fmt/format.h> 
+#include <format> 
 #include <iostream>
 #include <typeinfo>
 #include <vector>
@@ -18,26 +18,26 @@ int main() {
  
    // polymorphically process each element in vector employees
    for (Employee* employeePtr : employees) {
-      std::cout << fmt::format("{}\n", employeePtr->toString());
+      std::cout << std::format("{}\n", employeePtr->toString());
 
       // determine whether employeePtr points to a SalariedEmployee; 
       // if not, dynamic_cast returns nullptr which evaluates to false
       if (auto ptr{dynamic_cast<SalariedEmployee*>(employeePtr)}) {
          double oldBaseSalary = ptr->getSalary();
-         std::cout << fmt::format("old salary: ${:.2f}\n", oldBaseSalary);
+         std::cout << std::format("old salary: ${:.2f}\n", oldBaseSalary);
          ptr->setSalary(1.10 * oldBaseSalary);
-         std::cout << fmt::format(
+         std::cout << std::format(
             "new salary with 10% increase is: ${:.2f}\n",
             ptr->getSalary());
       } 
       
-      std::cout << fmt::format("earned ${:.2f}\n\n", 
+      std::cout << std::format("earned ${:.2f}\n\n", 
          employeePtr->earnings());
    } 
  
    // display each object’s type
    for (const Employee* employeePtr : employees) {
-      std::cout << fmt::format("{}\n", typeid(*employeePtr).name());
+      std::cout << std::format("{}\n", typeid(*employeePtr).name());
    } 
 } 
 

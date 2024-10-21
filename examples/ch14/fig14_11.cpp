@@ -3,7 +3,7 @@
 // set_symmetric_difference and set_union.
 #include <array>
 #include <algorithm>
-#include <fmt/format.h> // C++20: This will be #include <format>
+#include <format> // C++20: This will be #include <format>
 #include <iostream>
 #include <iterator> 
 #include <vector> 
@@ -22,11 +22,11 @@ int main() {
    std::ranges::copy(a3, output); // display array a3
 
    // determine whether a2 is completely contained in a1
-   std::cout << fmt::format("\n\na1 {} a2",
+   std::cout << std::format("\n\na1 {} a2",
       std::ranges::includes(a1, a2) ? "includes" : "does not include");
 
    // determine whether a3 is completely contained in a1
-   std::cout << fmt::format("\n\na1 {} a3",
+   std::cout << std::format("\n\na1 {} a3",
       std::ranges::includes(a1, a3) ? "includes" : "does not include");
 
    // determine elements of a1 not in a2 

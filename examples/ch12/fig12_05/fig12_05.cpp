@@ -1,6 +1,6 @@
 // fig12_05.cpp
 // Demonstrating a function try block.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <limits>
 #include <stdexcept>
@@ -9,7 +9,7 @@
 class Integer {
 public:
    explicit Integer(int i) : value{i} {
-      std::cout << fmt::format("Integer constructor: {}\n", value)
+      std::cout << std::format("Integer constructor: {}\n", value)
          << "Purposely throwing exception from Integer constructor\n";
       throw std::runtime_error("Integer constructor failed");
    }
@@ -23,7 +23,7 @@ public:
       std::cout << "ResourceManager constructor called\n";
    }
    catch (const std::runtime_error& ex) {
-      std::cout << fmt::format(
+      std::cout << std::format(
          "Exception while constructing ResourceManager: ", ex.what())
          << "\nAutomatically rethrowing the exception\n";
    }
@@ -36,7 +36,7 @@ int main() {
       const ResourceManager resource{7};
    }
    catch (const std::runtime_error& ex) {
-      std::cout << fmt::format("Rethrown exception caught in main: {}\n",
+      std::cout << std::format("Rethrown exception caught in main: {}\n",
          ex.what());
    }
 }

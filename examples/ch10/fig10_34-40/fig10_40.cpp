@@ -1,6 +1,6 @@
 // fig10_40.cpp
 // Processing Employees with various compensation models.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <vector>
 #include "Employee.h"
@@ -16,7 +16,7 @@ int main() {
 
    // print each Employee's information and earnings 
    for (const Employee& employee : employees) {
-      std::cout << fmt::format("{}\nearned: ${:.2f}\n\n", 
+      std::cout << std::format("{}\nearned: ${:.2f}\n\n", 
          employee.toString(), employee.earnings());
     }                                                                                                    
 } 

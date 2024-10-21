@@ -1,7 +1,7 @@
 // Fig. 10.20: Employee.cpp
 // Abstract-base-class Employee member-function definitions.
 // Note: No definitions are given for pure virtual functions.
-#include <fmt/format.h>
+#include <format>
 #include "Employee.h" // Employee class definition
 
 // constructor                                                        
@@ -21,7 +21,7 @@ std::string Employee::toString() const {return getString();}
 
 // protected virtual function that derived classes can override and call
 std::string Employee::getString() const {                       
-   return fmt::format("name: {}", getName());
+   return std::format("name: {}", getName());
 }                                                                                                                       
 
 /**************************************************************************

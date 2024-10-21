@@ -1,6 +1,6 @@
 // fig15_15.cpp
 // Unary fold expressions.
-#include <fmt/format.h> 
+#include <format> 
 #include <iostream>
 
 template <typename... Items>
@@ -25,12 +25,12 @@ auto unaryRightSubtract(Items... items) {
 
 int main() {
    std::cout << "Unary left and right fold with addition:"
-      << fmt::format("\n{}{}\n{}{}\n\n",
+      << std::format("\n{}{}\n{}{}\n\n",
          "unaryLeftAdd(1, 2, 3, 4): ", unaryLeftAdd(1, 2, 3, 4),
          "unaryRightAdd(1, 2, 3, 4): ", unaryRightAdd(1, 2, 3, 4));
 
    std::cout << "Unary left and right fold with subtraction:"
-      << fmt::format("\n{}{}\n{}{}\n",
+      << std::format("\n{}{}\n{}{}\n",
          "unaryLeftSubtract(1, 2, 3, 4): ",
          unaryLeftSubtract(1, 2, 3, 4),
          "unaryRightSubtract(1, 2, 3, 4): ",

@@ -2,7 +2,7 @@
 // Setting up the concurrencpp::runtime and scheduling tasks with it.
 #include <chrono>
 #include <concurrencpp/concurrencpp.h>
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <random>
 #include <sstream>
@@ -19,14 +19,14 @@ std::string id() {
 // Function printTask sleeps for a specified period in milliseconds. 
 // When it continues executing, it prints its name and completes.
 void printTask(std::string name, std::chrono::milliseconds sleep) {
-   std::cout << fmt::format(
+   std::cout << std::format(
       "{} (thread ID: {}) going to sleep for {} ms\n",
       name, id(), sleep.count());
 
    // put the calling thread to sleep for sleep milliseconds 
    std::this_thread::sleep_for(sleep);
 
-   std::cout << fmt::format("{} (thread ID: {}) done sleeping\n",
+   std::cout << std::format("{} (thread ID: {}) done sleeping\n",
       name, id());
 }
 
@@ -34,7 +34,7 @@ int main() {
    // set up the concurrencpp runtime for scheduling tasks to execute
    concurrencpp::runtime runtime;
 
-   std::cout << fmt::format("main's thread ID: {}\n\n", id());
+   std::cout << std::format("main's thread ID: {}\n\n", id());
 
    // set up random number generation for random sleep times
    std::random_device rd;
@@ -50,7 +50,7 @@ int main() {
    // schedule three tasks
    for (int i{1}; i < 4; ++i) {
       std::chrono::milliseconds sleepTime{ints(engine)};
-      std::string name{fmt::format("Task {}", i)};
+      std::string name{std::format("Task {}", i)};
 
       // use a concurrencpp thread_pool_executor to schedule a call
       // to printTask with name and sleepTime as its arguments
@@ -66,7 +66,7 @@ int main() {
       result.get(); // wait for each task to return its result
    } 
 
-   std::cout << fmt::format("main's thread ID: {}\nMAIN ENDS\n", id());
+   std::cout << std::format("main's thread ID: {}\nMAIN ENDS\n", id());
 }
 
 

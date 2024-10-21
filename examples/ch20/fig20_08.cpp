@@ -1,7 +1,7 @@
 // fig20_08.cpp
 // Demonstrate shared_ptrs.
 #include <algorithm>
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -12,7 +12,7 @@
 class Book {
 public:
    explicit Book(std::string_view bookTitle) : title{bookTitle} {}
-   ~Book() { std::cout << fmt::format("Destroying Book: {}\n", title); }
+   ~Book() { std::cout << std::format("Destroying Book: {}\n", title); }
    std::string title; // title of the Book
 };
 
@@ -32,17 +32,17 @@ int main() {
    // create a shared_ptr to a Book and display the reference count
    std::shared_ptr<Book> bookPtr{
       std::make_shared<Book>("C++ How to Program")};
-   std::cout << fmt::format("Reference count for Book {} is: {}\n",
+   std::cout << std::format("Reference count for Book {} is: {}\n",
       bookPtr->title, bookPtr.use_count());
 
    // create another shared_ptr to the Book and display reference count
    std::shared_ptr<Book> bookPtr2{bookPtr};
-   std::cout << fmt::format("Reference count for Book {} is: {}\n",
+   std::cout << std::format("Reference count for Book {} is: {}\n",
       bookPtr->title, bookPtr.use_count());
 
    // change the Book’s title and access it from both pointers
    bookPtr2->title = "Java How to Program";
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Updated Book title:\nbookPtr: {}\nbookPtr2: {}\n",
       bookPtr->title, bookPtr2->title);
 

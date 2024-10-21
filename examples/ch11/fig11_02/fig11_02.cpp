@@ -1,6 +1,6 @@
 // fig11_02.cpp
 // Demonstrating unique_ptr.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <memory>
 
@@ -8,12 +8,12 @@ class Integer {
 public:
    // constructor
    Integer(int i) : value{i} {
-      std::cout << fmt::format("Constructor for Integer {}\n", value);
+      std::cout << std::format("Constructor for Integer {}\n", value);
    }
 
    // destructor
    ~Integer() {
-      std::cout << fmt::format("Destructor for Integer {}\n", value);
+      std::cout << std::format("Destructor for Integer {}\n", value);
    }
 
    int getValue() const { return value; } // return Integer value
@@ -29,7 +29,7 @@ int main() {
    auto ptr{std::make_unique<Integer>(7)};
 
    // use unique_ptr to call an Integer member function
-   std::cout << fmt::format("Integer value: {}\n\nMain ends\n",
+   std::cout << std::format("Integer value: {}\n\nMain ends\n",
       ptr->getValue());
 }
 

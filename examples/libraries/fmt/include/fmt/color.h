@@ -586,7 +586,7 @@ inline std::basic_string<Char> vformat(
   **Example**::
 
     #include <fmt/color.h>
-    std::string message = fmt::format(fmt::emphasis::bold | fg(fmt::color::red),
+    std::string message = std::format(fmt::emphasis::bold | fg(fmt::color::red),
                                       "The answer is {}", 42);
   \endrst
 */
@@ -618,7 +618,7 @@ OutputIt vformat_to(
   **Example**::
 
     std::vector<char> out;
-    fmt::format_to(std::back_inserter(out),
+    std::format_to(std::back_inserter(out),
                    fmt::emphasis::bold | fg(fmt::color::red), "{}", 42);
   \endrst
 */

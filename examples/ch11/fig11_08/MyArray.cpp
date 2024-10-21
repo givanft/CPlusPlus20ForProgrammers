@@ -1,7 +1,7 @@
 // Fig. 11.5: MyArray.cpp
 // MyArray class member- and friend-function definitions.
 #include <algorithm>
-#include <fmt/format.h>
+#include <format>
 #include <initializer_list>
 #include <iostream>
 #include <memory>

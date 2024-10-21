@@ -153,7 +153,7 @@ struct is_compiled_string : std::is_base_of<compiled_string, S> {};
 
     // Converts 42 into std::string using the most efficient method and no
     // runtime format string processing.
-    std::string s = fmt::format(FMT_COMPILE("{}"), 42);
+    std::string s = std::format(FMT_COMPILE("{}"), 42);
   \endrst
  */
 #ifdef __cpp_if_constexpr

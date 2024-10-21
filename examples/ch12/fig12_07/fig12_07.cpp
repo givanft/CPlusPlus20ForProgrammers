@@ -1,7 +1,7 @@
 // fig12_07.cpp
 // Demonstrating set_new_handler.
 #include <array>
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <memory>
 #include <new> // set_new_handler is defined here
@@ -22,7 +22,7 @@ int main() {
    // aim each unique_ptr at a big block of memory
    for (int i{0}; auto & item : items) {
       item = std::make_unique<double[]>(500'000'000);
-      std::cout << fmt::format(
+      std::cout << std::format(
          "items[{}] points to 500,000,000 doubles\n", i++);
    }
 }

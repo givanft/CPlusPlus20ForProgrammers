@@ -1,6 +1,6 @@
 // Fig. 10.44: Derived.cpp
 // Member-function definitions for class Derived
-#include <fmt/format.h> // In C++20, this will be #include <format> 
+#include <format> // In C++20, this will be #include <format> 
 #include "Derived.h"
 
 // constructor for Derived calls Base1 and Base2 constructors
@@ -12,7 +12,7 @@ double Derived::getReal() const {return m_real;}
 
 // display all data members of Derived
 std::string Derived::toString() const { 
-   return fmt::format("int: {}; char: {}; double: {}", 
+   return std::format("int: {}; char: {}; double: {}", 
       Base1::getData(), Base2::getData(), getReal()); 
 } 
 

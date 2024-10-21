@@ -1,7 +1,7 @@
 // fig13_07.cpp
 // Standard library set class template.
 #include <algorithm>
-#include <fmt/format.h> // C++20: This will be #include <format>
+#include <format> // C++20: This will be #include <format>
 #include <iostream>
 #include <iterator> // ostream_iterator
 #include <set>
@@ -17,14 +17,14 @@ int main() {
    // p.first represents location of 13.8 in doubles and  
    // p.second represents whether 13.8 was inserted         
    auto p{doubles.insert(13.8)}; // value not in set   
-   std::cout << fmt::format("\n{} {} inserted\n", *(p.first),
+   std::cout << std::format("\n{} {} inserted\n", *(p.first),
       (p.second ? "was" : "was not"));
    std::cout << "doubles contains: ";
    std::ranges::copy(doubles, output);
 
    // insert 9.5 in doubles                          
    p = doubles.insert(9.5); // value already in set
-   std::cout << fmt::format("\n{} {} inserted\n", *(p.first),
+   std::cout << std::format("\n{} {} inserted\n", *(p.first),
       (p.second ? "was" : "was not"));
    std::cout << "doubles contains: ";
    std::ranges::copy(doubles, output);

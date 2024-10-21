@@ -1,18 +1,18 @@
 // fig13_08.cpp
 // Standard library multimap class template.
-#include <fmt/format.h> // C++20: This will be #include <format>
+#include <format> // C++20: This will be #include <format>
 #include <iostream>
 #include <map> // multimap class-template definition
 
 int main() {
    std::multimap<int, double> pairs{}; // create multimap
-   std::cout << fmt::format("Number of 15 keys in pairs: {}\n",
+   std::cout << std::format("Number of 15 keys in pairs: {}\n",
       pairs.count(15));
 
    // insert two pairs
    pairs.insert(std::make_pair(15, 99.3));
    pairs.insert(std::make_pair(15, 2.7));
-   std::cout << fmt::format("Number of 15 keys in pairs: {}\n\n",
+   std::cout << std::format("Number of 15 keys in pairs: {}\n\n",
       pairs.count(15));
 
    // insert five pairs
@@ -26,7 +26,7 @@ int main() {
 
    // walk through elements of pairs                    
    for (const auto& mapItem : pairs) {
-      std::cout << fmt::format("{}\t{}\n", mapItem.first, mapItem.second);
+      std::cout << std::format("{}\t{}\n", mapItem.first, mapItem.second);
    }
 }
 

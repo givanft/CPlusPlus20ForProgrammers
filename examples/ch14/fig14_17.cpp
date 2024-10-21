@@ -2,7 +2,7 @@
 // Demonstrating projections with C++20 range algorithms.
 #include <array> 
 #include <algorithm>
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <iterator>
 #include <string> 
@@ -23,7 +23,7 @@ private:
 
 // operator<< for an Employee
 std::ostream& operator<<(std::ostream& out, const Employee& e) {
-   out << fmt::format("{:10}{:10}{}", 
+   out << std::format("{:10}{:10}{}", 
       e.getLast(), e.getFirst(), e.getSalary());
    return out;
 }

@@ -2796,9 +2796,9 @@ class FMT_API system_error : public std::runtime_error {
   /**
    \rst
    Constructs a :class:`fmt::system_error` object with a description
-   formatted with `fmt::format_system_error`. *message* and additional
+   formatted with `std::format_system_error`. *message* and additional
    arguments passed into the constructor are formatted similarly to
-   `fmt::format`.
+   `std::format`.
 
    **Example**::
 
@@ -3330,7 +3330,7 @@ arg_join<internal::iterator_t<const Range>, wchar_t> join(const Range& range,
 
   **Example**::
 
-    #include <fmt/format.h>
+    #include <format>
 
     std::string answer = fmt::to_string(42);
   \endrst
@@ -3404,7 +3404,7 @@ inline OutputIt vformat_to(
  **Example**::
 
    std::vector<char> out;
-   fmt::format_to(std::back_inserter(out), "{}", 42);
+   std::format_to(std::back_inserter(out), "{}", 42);
  \endrst
  */
 template <typename OutputIt, typename S, typename... Args,
@@ -3569,7 +3569,7 @@ FMT_CONSTEXPR internal::udl_formatter<Char, CHARS...> operator""_format() {
 #  else
 /**
   \rst
-  User-defined literal equivalent of :func:`fmt::format`.
+  User-defined literal equivalent of :func:`std::format`.
 
   **Example**::
 

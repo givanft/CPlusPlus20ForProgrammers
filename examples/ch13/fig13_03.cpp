@@ -2,7 +2,7 @@
 // Testing standard library vector class template
 // element-manipulation functions.
 #include <algorithm> // copy algorithm
-#include <fmt/format.h> // C++20: This will be #include <format>
+#include <format> // C++20: This will be #include <format>
 #include <iostream>
 #include <ranges> 
 #include <iterator> // ostream_iterator iterator
@@ -16,7 +16,7 @@ int main() {
    std::cout << "integers contains: ";
    std::copy(integers.cbegin(), integers.cend(), output);
 
-   std::cout << fmt::format("\nfront: {}\nback: {}\n\n",
+   std::cout << std::format("\nfront: {}\nback: {}\n\n",
       integers.front(), integers.back());
 
    integers[0] = 7; // set first element to 7             
@@ -34,7 +34,7 @@ int main() {
 
    // erase remaining elements                          
    integers.erase(integers.cbegin(), integers.cend());
-   std::cout << fmt::format("\nErased all elements: integers {} empty\n",
+   std::cout << std::format("\nErased all elements: integers {} empty\n",
       integers.empty() ? "is" : "is not");
 
    // insert elements from the vector values                             
@@ -44,7 +44,7 @@ int main() {
 
    // empty integers; clear empties a collection
    integers.clear();
-   std::cout << fmt::format("\nAfter clear, integers {} empty\n",
+   std::cout << std::format("\nAfter clear, integers {} empty\n",
       integers.empty() ? "is" : "is not");
 }
 

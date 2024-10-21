@@ -1,6 +1,6 @@
 // fig20_13.cpp
 // Demonstrate use of weak_ptr.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <memory>
 #include "Author.h"
@@ -22,9 +22,9 @@ int main() {
    authorPtr->sharedBookPtr = bookPtr;
 
    // reference count for bookPtr and authorPtr is two
-   std::cout << fmt::format("Reference count for Book {} is {}\n",
+   std::cout << std::format("Reference count for Book {} is {}\n",
       bookPtr->title, bookPtr.use_count());
-   std::cout << fmt::format("Reference count for Author {} is {}\n\n",
+   std::cout << std::format("Reference count for Author {} is {}\n\n",
       authorPtr->name, authorPtr.use_count());
 
    // access the cross references to print the data they point to
@@ -34,9 +34,9 @@ int main() {
    authorPtr->printBookTitle();
 
    // reference count for each shared_ptr is two
-   std::cout << fmt::format("\nReference count for Book {} is {}\n",
+   std::cout << std::format("\nReference count for Book {} is {}\n",
       bookPtr->title, bookPtr.use_count());
-   std::cout << fmt::format("Reference count for Author {} is {}\n\n",
+   std::cout << std::format("Reference count for Author {} is {}\n\n",
       authorPtr->name, authorPtr.use_count());
 
    // the shared_ptrs go out of scope, the Book and Author are destroyed

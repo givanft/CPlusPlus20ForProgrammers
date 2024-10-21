@@ -2560,7 +2560,7 @@ FMT_FUNC void report_system_error(int error_code,
 
 FMT_FUNC std::string vformat(string_view fmt, format_args args) {
   // Don't optimize the "{}" case to keep the binary size small and because it
-  // can be better optimized in fmt::format anyway.
+  // can be better optimized in std::format anyway.
   auto buffer = memory_buffer();
   detail::vformat_to(buffer, fmt, args);
   return to_string(buffer);

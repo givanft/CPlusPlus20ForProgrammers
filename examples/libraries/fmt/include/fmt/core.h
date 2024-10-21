@@ -1725,8 +1725,8 @@ class format_arg_store
 
 /**
   \rst
-  Constructs a `~fmt::format_arg_store` object that contains references to
-  arguments and can be implicitly converted to `~fmt::format_args`. `Context`
+  Constructs a `~std::format_arg_store` object that contains references to
+  arguments and can be implicitly converted to `~std::format_args`. `Context`
   can be omitted in which case it defaults to `~fmt::context`.
   See `~fmt::arg` for lifetime considerations.
   \endrst
@@ -1809,7 +1809,7 @@ template <typename Context> class basic_format_args {
 
   /**
    \rst
-   Constructs a `basic_format_args` object from `~fmt::format_arg_store`.
+   Constructs a `basic_format_args` object from `~std::format_arg_store`.
    \endrst
    */
   template <typename... Args>
@@ -2905,7 +2905,7 @@ FMT_API auto vformat(string_view fmt, format_args args) -> std::string;
   **Example**::
 
     #include <fmt/core.h>
-    std::string message = fmt::format("The answer is {}", 42);
+    std::string message = std::format("The answer is {}", 42);
   \endrst
 */
 template <typename... T>
@@ -2932,7 +2932,7 @@ auto vformat_to(OutputIt out, string_view fmt, format_args args) -> OutputIt {
  **Example**::
 
    auto out = std::vector<char>();
-   fmt::format_to(std::back_inserter(out), "{}", 42);
+   std::format_to(std::back_inserter(out), "{}", 42);
  \endrst
  */
 template <typename OutputIt, typename... T,

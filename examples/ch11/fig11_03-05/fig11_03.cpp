@@ -1,6 +1,6 @@
 // fig11_03.cpp
 // MyArray class test program.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <stdexcept>
 #include <utility> // for std::move
@@ -17,11 +17,11 @@ int main() {
    MyArray ints2(10); // 10-element MyArray; note () rather than {}
 
    // print ints1 size and contents
-   std::cout << fmt::format("\nints1 size: {}\ncontents: ", ints1.size())
+   std::cout << std::format("\nints1 size: {}\ncontents: ", ints1.size())
       << ints1; // uses overloaded <<
 
    // print ints2 size and contents
-   std::cout << fmt::format("\nints2 size: {}\ncontents: ", ints2.size())
+   std::cout << std::format("\nints2 size: {}\ncontents: ", ints2.size())
       << ints2; // uses overloaded <<
 
    // input and print ints1 and ints2
@@ -41,7 +41,7 @@ int main() {
    MyArray ints3{ints1}; // invokes copy constructor
 
    // print ints3 size and contents                
-   std::cout << fmt::format("\nints3 size: {}\ncontents: ", ints3.size())
+   std::cout << std::format("\nints3 size: {}\ncontents: ", ints3.size())
       << ints3;
 
    // use overloaded copy assignment (=) operator
@@ -58,7 +58,7 @@ int main() {
    }
 
    // use overloaded subscript operator to create an rvalue
-   std::cout << fmt::format("ints1[5] is {}\n\n", ints1[5]);
+   std::cout << std::format("ints1[5] is {}\n\n", ints1[5]);
 
    // use overloaded subscript operator to create an lvalue
    std::cout << "Assigning 1000 to ints1[5]\n";
@@ -71,7 +71,7 @@ int main() {
       ints1[15] = 1000; // ERROR: subscript out of range
    } 
    catch (const std::out_of_range& ex) {                                       
-      std::cout << fmt::format("An exception occurred: {}\n", ex.what());
+      std::cout << std::format("An exception occurred: {}\n", ex.what());
    } 
 
    // initialize ints4 with contents of the MyArray returned by  
@@ -79,7 +79,7 @@ int main() {
    std::cout << "\nInitialize ints4 with temporary MyArray object\n";
    MyArray ints4{getArrayByValue()};
 
-   std::cout << fmt::format("\nints4 size: {}\ncontents: ", ints4.size()) 
+   std::cout << std::format("\nints4 size: {}\ncontents: ", ints4.size()) 
       << ints4;
 
    // convert ints4 to an rvalue reference with std::move and
@@ -87,17 +87,17 @@ int main() {
    std::cout << "\n\nInitialize ints5 with result of std::move(ints4)\n";
    MyArray ints5{std::move(ints4)}; // invokes move constructor
 
-   std::cout << fmt::format("\nints5 size: {}\ncontents: ", ints5.size())
+   std::cout << std::format("\nints5 size: {}\ncontents: ", ints5.size())
       << ints5
-      << fmt::format("\n\nSize of ints4 is now : {}", ints4.size());
+      << std::format("\n\nSize of ints4 is now : {}", ints4.size());
 
    // move contents of ints5 into ints4
    std::cout << "\n\nMove ints5 into ints4 via move assignment\n";
    ints4 = std::move(ints5); // invokes move assignment
 
-   std::cout << fmt::format("\nints4 size: {}\ncontents: ", ints4.size())
+   std::cout << std::format("\nints4 size: {}\ncontents: ", ints4.size())
       << ints4
-      << fmt::format("\n\nSize of ints5 is now: {}", ints5.size());
+      << std::format("\n\nSize of ints5 is now: {}", ints5.size());
 
    // check if ints5 is empty by contextually converting it to a bool
    if (ints5) {

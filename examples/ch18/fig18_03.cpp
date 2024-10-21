@@ -1,7 +1,7 @@
 // fig18_03.cpp
 // Implementing a coroutine with co_await and co_return.
 #include <concurrencpp/concurrencpp.h>
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include <memory> // for shared_ptr
 #include <random>
@@ -22,15 +22,15 @@ concurrencpp::result<void> sortCoroutine(
    std::shared_ptr<concurrencpp::thread_pool_executor> executor,
    std::vector<int>& values) {
 
-   std::cout << fmt::format("Thread {}: sortCoroutine started\n\n", id());
+   std::cout << std::format("Thread {}: sortCoroutine started\n\n", id());
 
    // lambda that sorts a portion of a vector
    auto sortTask{
       [&](auto begin, auto end) {
-         std::cout << fmt::format(
+         std::cout << std::format(
             "Thread {}: Sorting {} elements\n", id(), end - begin);
          std::sort(begin, end); 
-         std::cout << fmt::format("Thread {}: Finished sorting\n", id());
+         std::cout << std::format("Thread {}: Finished sorting\n", id());
       }
    };
 
@@ -39,7 +39,7 @@ concurrencpp::result<void> sortCoroutine(
 
    size_t middle{values.size() / 2}; // middle element index
 
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Thread {}: sortCoroutine starting first half sortTask\n", id());
 
    // use a concurrencpp thread_pool_executor to schedule 
@@ -50,7 +50,7 @@ concurrencpp::result<void> sortCoroutine(
       )
    );
 
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Thread {}: sortCoroutine starting second half sortTask\n", id());
 
    // use a concurrencpp thread_pool_executor to schedule 
@@ -62,18 +62,18 @@ concurrencpp::result<void> sortCoroutine(
    );
 
    // suspend coroutine while waiting for all sortTasks to complete 
-   std::cout << fmt::format("\nThread {}: {}\n", id(),
+   std::cout << std::format("\nThread {}: {}\n", id(),
       "sortCoroutine co_awaiting sortTask completion");
    co_await concurrencpp::when_all(
       executor, results.begin(), results.end());
 
    // merge the two sorted sub-vectors
-   std::cout << fmt::format(
+   std::cout << std::format(
       "\nThread {}: sortCoroutine merging results\n", id());
    std::inplace_merge(
       values.begin(), values.begin() + middle, values.end());
 
-   std::cout << fmt::format("Thread {}: sortCoroutine done\n", id());
+   std::cout << std::format("Thread {}: sortCoroutine done\n", id());
    co_return; // terminate coroutine and resume caller
 }
 
@@ -86,23 +86,23 @@ int main() {
    std::default_random_engine engine{rd()};
    std::uniform_int_distribution ints;
 
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Thread {}: main creating vector of random ints\n", id());
    std::vector<int> values(100'000'000);
    std::ranges::generate(values, [&]() {return ints(engine);});
 
-   std::cout << fmt::format(
+   std::cout << std::format(
       "Thread {}: main starting sortCoroutine\n", id());
    auto result{sortCoroutine(executor, values)};
 
-   std::cout << fmt::format("\nThread {}: {}\n", id(),
+   std::cout << std::format("\nThread {}: {}\n", id(),
      "main resumed. Waiting for sortCoroutine to complete.");
    result.get(); // wait for sortCoroutine to complete
 
-   std::cout << fmt::format(
+   std::cout << std::format(
       "\nThread {}: main confirming that vector is sorted\n", id());
    bool sorted{std::ranges::is_sorted(values)};
-   std::cout << fmt::format("Thread {}: values is{} sorted\n", 
+   std::cout << std::format("Thread {}: values is{} sorted\n", 
       id(), sorted ? "" : " not");
 }
 

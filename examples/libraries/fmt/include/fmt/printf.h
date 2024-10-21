@@ -528,7 +528,7 @@ using wprintf_args = basic_format_args<wprintf_context>;
 
 /**
   \rst
-  Constructs an `~fmt::format_arg_store` object that contains references to
+  Constructs an `~std::format_arg_store` object that contains references to
   arguments and can be implicitly converted to `~fmt::printf_args`.
   \endrst
  */
@@ -540,7 +540,7 @@ inline auto make_printf_args(const T&... args)
 
 /**
   \rst
-  Constructs an `~fmt::format_arg_store` object that contains references to
+  Constructs an `~std::format_arg_store` object that contains references to
   arguments and can be implicitly converted to `~fmt::wprintf_args`.
   \endrst
  */

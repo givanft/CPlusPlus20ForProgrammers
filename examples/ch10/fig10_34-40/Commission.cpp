@@ -1,6 +1,6 @@
 // Fig. 10.37: Commission.cpp
 // Commission member-function definitions.
-#include <fmt/format.h>
+#include <format>
 #include <stdexcept>
 #include "Commission.h" // class definition
 
@@ -25,7 +25,7 @@ double Commission::earnings() const {
 
 // return string containing Commission information
 std::string Commission::toString() const {                       
-   return fmt::format("gross sales: ${:.2f}; commission rate: {:.2f}", 
+   return std::format("gross sales: ${:.2f}; commission rate: {:.2f}", 
       m_grossSales, m_commissionRate);
 }   
 

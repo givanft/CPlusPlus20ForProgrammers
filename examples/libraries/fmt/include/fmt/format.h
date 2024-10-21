@@ -759,8 +759,8 @@ class FMT_API format_error : public std::runtime_error {
 
 /**
   \rst
-  Constructs a `~fmt::format_arg_store` object that contains references
-  to arguments and can be implicitly converted to `~fmt::format_args`.
+  Constructs a `~std::format_arg_store` object that contains references
+  to arguments and can be implicitly converted to `~std::format_args`.
   If ``fmt`` is a compile-time string then `make_args_checked` checks
   its validity at compile time.
   \endrst
@@ -2180,7 +2180,7 @@ FMT_CONSTEXPR void handle_dynamic_spec(int& value,
   **Example**::
 
     // A compile-time error because 'd' is an invalid specifier for strings.
-    std::string s = fmt::format(FMT_STRING("{:d}"), "foo");
+    std::string s = std::format(FMT_STRING("{:d}"), "foo");
   \endrst
  */
 #define FMT_STRING(s) FMT_STRING_IMPL(s, fmt::compile_string, )
@@ -2256,7 +2256,7 @@ FMT_API auto vsystem_error(int error_code, string_view format_str,
 /**
  \rst
  Constructs :class:`std::system_error` with a message formatted with
- ``fmt::format(fmt, args...)``.
+ ``std::format(fmt, args...)``.
   *error_code* is a system error code as given by ``errno``.
 
  **Example**::
@@ -2476,7 +2476,7 @@ template <typename Char = char> class dynamic_formatter {
 
   **Example**::
 
-    auto s = fmt::format("{}", fmt::ptr(p));
+    auto s = std::format("{}", fmt::ptr(p));
   \endrst
  */
 template <typename T> auto ptr(T p) -> const void* {
@@ -2622,7 +2622,7 @@ auto join(Range&& range, string_view sep)
 
   **Example**::
 
-    #include <fmt/format.h>
+    #include <format>
 
     std::string answer = fmt::to_string(42);
   \endrst
@@ -2789,7 +2789,7 @@ constexpr auto operator"" _a(const char* s, size_t) -> detail::udl_arg<char> {
 
 /**
   \rst
-  User-defined literal equivalent of :func:`fmt::format`.
+  User-defined literal equivalent of :func:`std::format`.
 
   **Example**::
 

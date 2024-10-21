@@ -1,7 +1,7 @@
 // fig12_02.cpp
 // Example that throws an exception on 
 // an attempt to divide by zero.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 #include "DivideByZeroException.h" // DivideByZeroException class 
 
@@ -29,10 +29,10 @@ int main() {
       // and code that will not execute if an exception occurs    
       try {
          double result{quotient(number1, number2)};
-         std::cout << fmt::format("The quotient is: {}\n", result);
+         std::cout << std::format("The quotient is: {}\n", result);
       }
       catch (const DivideByZeroException& divideByZeroException) {
-         std::cout << fmt::format("Exception occurred: {}\n",
+         std::cout << std::format("Exception occurred: {}\n",
             divideByZeroException.what());
       }
 

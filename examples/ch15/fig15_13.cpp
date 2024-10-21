@@ -1,6 +1,6 @@
 // fig15_13.cpp
 // Manipulating tuples.
-#include <fmt/format.h> 
+#include <format> 
 #include <iostream>
 #include <string>
 #include <tuple>
@@ -29,18 +29,18 @@ int main() {
       // variables' types are inferred from the tuple's element values
       auto [partNumber, partName, quantity, price] {getInventory(i)};
 
-      std::cout << fmt::format("{}: {}, {}: {}, {}: {}, {}: {:.2f}\n",
+      std::cout << std::format("{}: {}, {}: {}, {}: {}, {}: {:.2f}\n",
          "Part number", partNumber, "Tool", partName,
          "Quantity", quantity, "Price", price);
    }
 
    std::cout << "\nAccessing a tuple's elements by index number:\n";
    auto hammer{getInventory(1)};
-   std::cout << fmt::format("{}: {}, {}: {}, {}: {}, {}: {:.2f}\n",
+   std::cout << std::format("{}: {}, {}: {}, {}: {}, {}: {:.2f}\n",
       "Part number", std::get<0>(hammer), "Tool", std::get<1>(hammer),
       "Quantity", std::get<2>(hammer), "Price", std::get<3>(hammer));
 
-   std::cout << fmt::format("A Part tuple has {} elements\n",
+   std::cout << std::format("A Part tuple has {} elements\n",
       std::tuple_size<Part>{}); // get the tuple size
 }
 

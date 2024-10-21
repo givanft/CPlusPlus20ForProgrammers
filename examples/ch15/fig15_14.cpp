@@ -1,6 +1,6 @@
 // fig15_14.cpp
 // Variadic function templates.
-#include <fmt/format.h> 
+#include <format> 
 #include <iostream>
 #include <string>
 
@@ -26,13 +26,13 @@ int main() {
    using namespace std::literals;
 
    std::cout << "Recursive variadic function template sum:"
-      << fmt::format("\n{}{}\n{}{}\n{}{}\n{}{}\n\n",
+      << std::format("\n{}{}\n{}{}\n{}{}\n{}{}\n\n",
          "sum(1): ", sum(1), "sum(1, 2): ", sum(1, 2),
          "sum(1, 2, 3): ", sum(1, 2, 3),
          "sum(\"s\"s, \"u\"s, \"m\"s): ", sum("s"s, "u"s, "m"s));
 
    std::cout << "Variadic function template foldingSum:"
-      << fmt::format("\n{}{}\n{}{}\n{}{}\n{}{}\n",
+      << std::format("\n{}{}\n{}{}\n{}{}\n{}{}\n",
          "sum(1): ", foldingSum(1), "sum(1, 2): ", foldingSum(1, 2),
          "sum(1, 2, 3): ", foldingSum(1, 2, 3),
          "sum(\"s\"s, \"u\"s, \"m\"s): ",

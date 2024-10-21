@@ -1,7 +1,7 @@
 // fig13_09.cpp
 // Standard library class map class template.
 #include <iostream>
-#include <fmt/format.h> // C++20: This will be #include <format>
+#include <format> // C++20: This will be #include <format>
 #include <map> // map class-template definition
 
 int main() {
@@ -12,7 +12,7 @@ int main() {
    // walk through elements of pairs
    std::cout << "pairs contains:\nKey\tValue\n";
    for (const auto& pair : pairs) {
-      std::cout << fmt::format("{}\t{}\n", pair.first, pair.second);
+      std::cout << std::format("{}\t{}\n", pair.first, pair.second);
    }
    
    pairs[25] = 9999.99; // use subscripting to change value for key 25
@@ -21,7 +21,7 @@ int main() {
    // walk through elements of pairs
    std::cout << "\nAfter updates, pairs contains:\nKey\tValue\n";
    for (const auto& pair : pairs) {
-      std::cout << fmt::format("{}\t{}\n", pair.first, pair.second);
+      std::cout << std::format("{}\t{}\n", pair.first, pair.second);
    }
 }
 

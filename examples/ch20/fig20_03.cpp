@@ -1,6 +1,6 @@
 // fig20_03.cpp
 // Demonstrating namespaces.
-#include <fmt/format.h>
+#include <format>
 #include <iostream>
 
 int integer1{98}; // global variable
@@ -28,13 +28,13 @@ namespace {
 
 int main() {
    // output value doubleInUnnamed of unnamed namespace
-   std::cout << fmt::format("doubleInUnnamed = {}\n", doubleInUnnamed);
+   std::cout << std::format("doubleInUnnamed = {}\n", doubleInUnnamed);
 
    // output global variable
-   std::cout << fmt::format("(global) integer1 = {}\n", integer1);
+   std::cout << std::format("(global) integer1 = {}\n", integer1);
 
    // output values of Example namespace
-   std::cout << fmt::format(
+   std::cout << std::format(
       "pi = {}\ne = {}\ninteger1 = {}\nfiscal3 = {}\n", Example::pi,
       Example::e, Example::integer1, Example::Inner::fiscal3);
 
@@ -44,9 +44,9 @@ int main() {
 // display variable and constant values
 void Example::printValues() {
    std::cout << "\nIn printValues:\n";
-   std::cout << fmt::format(
+   std::cout << std::format(
       "integer1 = {}\npi = {}\ne = {}\n", integer1, pi, e);
-   std::cout << fmt::format(
+   std::cout << std::format(
       "doubleInUnnamed = {}\n(global) integer1 = {}\nfiscal3 = {}\n",
       doubleInUnnamed, ::integer1, Inner::fiscal3);
 }

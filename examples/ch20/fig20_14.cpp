@@ -1,6 +1,6 @@
 // fig20_14.cpp
 // Summing the elements of a braced initializer
-#include <fmt/format.h>
+#include <format>
 #include <initializer_list>
 #include <iostream>
 #include <string>
@@ -20,17 +20,17 @@ T sum(std::initializer_list<T> list) {
 
 int main() {
    // display the sum of four ints contained in a braced initializer
-   std::cout << fmt::format("The sum of {} is: {}\n",
+   std::cout << std::format("The sum of {} is: {}\n",
       "{1, 2, 3, 4}", sum({1, 2, 3, 4}));
 
    // display the sum of three doubles contained in a braced initializer
-   std::cout << fmt::format("The sum of {} is: {}\n",
+   std::cout << std::format("The sum of {} is: {}\n",
       "{1.1, 2.2, 3.3}", sum({1.1, 2.2, 3.3}));
       
    // display the sum of two strings contained in a braced initializer
    std::string s1{"Happy "};
    std::string s2{"birthday!"};
-   std::cout << fmt::format("The sum of {} is: {}\n",
+   std::cout << std::format("The sum of {} is: {}\n",
       "{\"Happy \", \"birthday!\"}", sum({s1, s2}));
 }
 

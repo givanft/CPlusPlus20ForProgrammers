@@ -2,9 +2,9 @@
 // Compound-interest example with C++20 text formatting.
 #include <iostream>
 #include <cmath> // for pow function
-#include "fmt/format.h" // in C++20, this will be #include <format>
+#include <format> // in C++20, this will be #include <format>
 using namespace std;
-using namespace fmt; // not needed in C++20
+
 
 int main() {
    double principal{1000.00}; // initial amount before interest

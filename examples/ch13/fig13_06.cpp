@@ -1,7 +1,7 @@
 // fig13_06.cpp
 // Standard library multiset class template
 #include <algorithm> // copy algorithm
-#include <fmt/format.h> // C++20: This will be #include <format>
+#include <format> // C++20: This will be #include <format>
 #include <iostream>
 #include <iterator> // ostream_iterator
 #include <ranges> 
@@ -10,30 +10,30 @@
 
 int main() {
    std::multiset<int, std::less<int>> ints{}; // multiset of int values
-   std::cout << fmt::format("15s in ints: {}\n", ints.count(15));
+   std::cout << std::format("15s in ints: {}\n", ints.count(15));
 
    std::cout << "\nInserting two 15s into ints\n";
    ints.insert(15); // insert 15 in ints
    ints.insert(15); // insert 15 in ints
-   std::cout << fmt::format("15s in ints: {}\n\n", ints.count(15));
+   std::cout << std::format("15s in ints: {}\n\n", ints.count(15));
 
    // search for 15 and 20 in ints; find returns an iterator
    for (int i : {15, 20}) {
       if (auto result{ints.find(i)}; result != ints.end()) {
-         std::cout << fmt::format("Found {} in ints\n", i);
+         std::cout << std::format("Found {} in ints\n", i);
       }
       else {
-         std::cout << fmt::format("Did not find {} in ints\n", i);
+         std::cout << std::format("Did not find {} in ints\n", i);
       }
    }
 
    // search for 15 and 20 in ints; contains returns a bool
    for (int i : {15, 20}) {
       if (ints.contains(i)) {
-         std::cout << fmt::format("Found {} in ints\n", i);
+         std::cout << std::format("Found {} in ints\n", i);
       }
       else {
-         std::cout << fmt::format("Did not find {} in ints\n", i);
+         std::cout << std::format("Did not find {} in ints\n", i);
       }
    }
 
@@ -44,13 +44,13 @@ int main() {
    std::ranges::copy(ints, std::ostream_iterator<int>{std::cout, " "});
 
    // determine lower and upper bound of 22 in ints
-   std::cout << fmt::format(
+   std::cout << std::format(
       "\n\nlower_bound(22): {}\nupper_bound(22): {}\n\n",
       *ints.lower_bound(22), *ints.upper_bound(22));
 
    // use equal_range to determine lower and upper bound of 22 in ints 
    auto p{ints.equal_range(22)};
-   std::cout << fmt::format(
+   std::cout << std::format(
       "lower_bound(22): {}\nupper_bound(22): {}\n",
       *(p.first), *(p.second));
 }

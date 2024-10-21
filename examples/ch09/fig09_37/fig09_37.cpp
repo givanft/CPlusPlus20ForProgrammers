@@ -2,7 +2,7 @@
 // Serializing and deserializing objects containing private data.
 #include <cereal/archives/json.hpp>
 #include <cereal/types/vector.hpp>
-#include <fmt/format.h>
+#include <format>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -47,7 +47,7 @@ void serialize(Archive& archive, Record& record) {
 // display record at command line
 void displayRecords(const std::vector<Record>& records) {
    for (const auto& r : records) {
-      std::cout << fmt::format("{} {} {} {:.2f}\n", r.getAccount(),
+      std::cout << std::format("{} {} {} {:.2f}\n", r.getAccount(),
          r.getFirst(), r.getLast(), r.getBalance());
    }
 }

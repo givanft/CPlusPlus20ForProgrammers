@@ -464,7 +464,7 @@ template <> struct is_char<char32_t> : std::true_type {};
       return {s.data(), s.length()};
     }
     }
-    std::string message = fmt::format(my_string("The answer is {}"), 42);
+    std::string message = std::format(my_string("The answer is {}"), 42);
   \endrst
  */
 template <typename Char, FMT_ENABLE_IF(is_char<Char>::value)>
@@ -1352,8 +1352,8 @@ class format_arg_store
 
 /**
   \rst
-  Constructs an `~fmt::format_arg_store` object that contains references to
-  arguments and can be implicitly converted to `~fmt::format_args`. `Context`
+  Constructs an `~std::format_arg_store` object that contains references to
+  arguments and can be implicitly converted to `~std::format_args`. `Context`
   can be omitted in which case it defaults to `~fmt::context`.
   See `~fmt::arg` for lifetime considerations.
   \endrst
@@ -1366,7 +1366,7 @@ inline format_arg_store<Context, Args...> make_format_args(
 
 /**
   \rst
-  A dynamic version of `fmt::format_arg_store<>`.
+  A dynamic version of `std::format_arg_store<>`.
   It's equipped with a storage to potentially temporary objects which lifetime
   could be shorter than the format arguments object.
 
@@ -1431,7 +1431,7 @@ class dynamic_format_arg_store
 
     **Example**::
 
-      fmt::dynamic_format_arg_store<fmt::format_context> store;
+      fmt::dynamic_format_arg_store<std::format_context> store;
       store.push_back(42);
       store.push_back("abc");
       store.push_back(1.5f);
@@ -1522,7 +1522,7 @@ template <typename Context> class basic_format_args {
 
   /**
    \rst
-   Constructs a `basic_format_args` object from `~fmt::format_arg_store`.
+   Constructs a `basic_format_args` object from `~std::format_arg_store`.
    \endrst
    */
   template <typename... Args>
@@ -1728,7 +1728,7 @@ inline std::basic_string<Char> vformat(
   **Example**::
 
     #include <fmt/core.h>
-    std::string message = fmt::format("The answer is {}", 42);
+    std::string message = std::format("The answer is {}", 42);
   \endrst
 */
 // Pass char_t as a default template parameter instead of using
